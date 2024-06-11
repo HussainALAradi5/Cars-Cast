@@ -23,7 +23,7 @@ A registered user can enjoy a seamless booking, flexible rental durations and tr
 
 #### Components Diagram:
 
-![COMPONENTS-DIAGRAM](./images/componentsDiagram.pngpng)
+![COMPONENTS-DIAGRAM](./images/componentsDiagram.png)
 
 #### Wireframe:
 
