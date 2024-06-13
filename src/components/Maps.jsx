@@ -1,7 +1,8 @@
 const Maps = () => {
-
   return (
-
+    <>
+      <h1></h1>
+    </>
   )
 }
 
