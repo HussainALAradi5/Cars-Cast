@@ -1,5 +1,12 @@
 body {
+  font-family: monospace;
+  font-size: 1rem;
+
   margin: 0;
+  background: url('../images/rental1.jpg');
+  background-size: cover;
+  color: rgb(188, 38, 188);
+  font-weight: bolder;
 }
 ul {
   list-style-type: none;
