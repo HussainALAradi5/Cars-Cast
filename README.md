@@ -19,15 +19,15 @@ A registered user can enjoy a seamless booking, flexible rental durations and tr
 
 #### Entity-Relationship Diagram (ERD):
 
-![ERD](./images/CarCast.drawio.png)
+![ERD](./client/images/CarCast.drawio.png)
 
 #### Components Diagram:
 
-![COMPONENTS-DIAGRAM](./images/componentsDiagram.png)
+![COMPONENTS-DIAGRAM](./client/images/componentsDiagram.png)
 
 #### Wireframe:
 
-![WireFrame](./images/wireframe.png)
+![WireFrame](./client/images/wireframe.png)
 
 ---
 
