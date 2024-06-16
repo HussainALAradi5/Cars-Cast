@@ -1,4 +1,4 @@
-const Car = () => {
+const Car = (props) => {
   return (
    <div className="card" onClick={}>
    <div className="img-wrapper">
