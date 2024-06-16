@@ -1,8 +1,8 @@
-import {link} from 'react-router-dom'
+import { link } from 'react-router-dom'
 
 const Car = (props) => {
   return (
-    
+    <
    <div className="card" onClick={props.onClick}>
    <div className="img-wrapper">
     <img src={props.image} alt={props.make}{}{props.model}/>
