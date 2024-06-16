@@ -1,8 +1,16 @@
 const Car = () => {
   return (
-    <>
-      <h1></h1>
-    </>
+   <div className="card" onClick={}>
+   <div className="img-wrapper">
+    <img />
+   </div>
+   <div className="info-wrapper  flex-col">
+    <h3>{}</h3>
+    <p>{}</p>
+    
+     </div>
+
+   </div>
   )
 }
 
