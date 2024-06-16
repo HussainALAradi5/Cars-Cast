@@ -12,7 +12,7 @@ const Home = () => {
     const getCars = async () => {
       try {
         const response = await axios.get(`https://freetestapi.com/api/v1/cars`)
-        setCars()
+        setCars(response.data.results)
       } catch {}
     }
   }, [])
