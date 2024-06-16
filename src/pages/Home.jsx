@@ -36,7 +36,8 @@ const Home = () => {
               year={car.year}
               image={car.image}
               price={car.price}
-              //reviewswillbeadded
+              onClick={() => handleCarsClick(car.id)}
+              //reviewslinkwillbeadded
             />
           ))}
         </section>
