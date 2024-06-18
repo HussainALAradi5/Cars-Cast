@@ -66,9 +66,7 @@ const CarDetails = () => {
 
         {/* JS built in function to fix the decimals and then convert the whole number into string (^_^) */}
       </ul>
-      {/*       <button onClick={handleBuyNow}>Buy Now</button>
-       */}{' '}
-      <hr />
+      {<button>Buy Now</button>} <hr />
       <h2>Car Reviews</h2>
       {reviews.length > 0 ? (
         <ul>
