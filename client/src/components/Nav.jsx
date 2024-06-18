@@ -1,4 +1,6 @@
 import '../navStyle.css'
+import { Link } from 'react-router-dom'
+
 const Nav = () => {
   return (
     <div className="nav">
@@ -6,20 +8,26 @@ const Nav = () => {
       <br />
       <ul className="listNav">
         <li>
-          <button>Home</button>
+          <Link to="/">
+            <button>Home</button>
+          </Link>
         </li>
 
         <li>
           {' '}
-          <button>Login</button>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
         </li>
         <li>
-          {' '}
-          <button>Register</button>
+          <Link to="/register">
+            <button>Register</button>
+          </Link>
         </li>
         <li>
-          {' '}
-          <button>About</button>
+          <Link to="/about">
+            <button>About us</button>
+          </Link>
         </li>
       </ul>
     </div>
