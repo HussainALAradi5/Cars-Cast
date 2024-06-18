@@ -6,6 +6,7 @@ return (
  name="search"
  value={}
  placeholder=""
+ onChange={}
 ></input>
 <button type="submit"></button>
 

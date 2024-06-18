@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 const Home = () => {
   const [cars, setCars] = useState([])
+  const [searchResults, setSearchResults] = useState([])
+  const [searched, toggleSearched] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
 
   useEffect(() => {
     const getCars = async () => {
@@ -19,6 +22,18 @@ const Home = () => {
     getCars()
   }, [])
 
+  const getSearchResults = async (e) => {
+    e.preventDefault()
+    const response = await axios.get(
+      `https://freetestapi.com/api/v1/cars?search=${searchValue}`
+    )
+    setSearchResults(response.data)
+    toggleSearched(true)
+    setSearchValue('')
+  }
+  const handleChange = (e) => {
+    setSearchValue(e.target.value)
+  }
   return (
     <div className="homePage">
       <h1 className="homeHeader">welcome to our rental car project!</h1>
