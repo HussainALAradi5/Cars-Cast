@@ -46,24 +46,46 @@ const Home = () => {
         onChange={handleChange}
         onSubmit={getSearchResults}
       />
-      <div className="cars">
-        <h2>Pick a Car !</h2>
-        <section className="container-grid">
-          {cars.map((car) => (
-            <Car
-              key={car.id}
-              id={car.id}
-              make={car.make}
-              model={car.model}
-              year={car.year}
-              image={car.image}
-              price={car.price}
-              onClick={() => handleCarsClick(car.id)}
-              //reviewslinkwillbeadded
-            />
-          ))}
-        </section>
-      </div>
+
+      {searched ? (
+        <div className="search">
+          <h2>Search Results : </h2>
+          <section className="search-results-grid">
+            {searchResults.map((data) => (
+              <Car
+                key={data.id}
+                id={data.id}
+                make={data.make}
+                model={data.model}
+                year={data.year}
+                image={data.image}
+                price={data.price}
+                onClick={() => handleCarsClick(data.id)}
+                //reviewslinkwillbeadded
+              />
+            ))}
+          </section>
+        </div>
+      ) : (
+        <div className="cars">
+          <h2>NOT FOUND ! Please Try Again !</h2>
+          <section className="container-grid">
+            {cars.map((car) => (
+              <Car
+                key={car.id}
+                id={car.id}
+                make={car.make}
+                model={car.model}
+                year={car.year}
+                image={car.image}
+                price={car.price}
+                onClick={() => handleCarsClick(car.id)}
+                //reviewslinkwillbeadded
+              />
+            ))}
+          </section>
+        </div>
+      )}
     </div>
   )
 }
