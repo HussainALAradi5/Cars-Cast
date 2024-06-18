@@ -48,6 +48,7 @@ const show = async (req, res) => {
     }
 
     console.log(car)
+    return res.status(200).send(car)
   } catch (error) {
     console.error('Error fetching car details:', error)
     res.status(500).send('Error fetching car details')
@@ -65,6 +66,7 @@ const remove = async (req, res) => {
     }
 
     console.log(`Car deleted successfully: ${deletedCar._id}`)
+    return res.status(200).send(car)
   } catch (error) {
     console.error('Error deleting car:', error)
     res.status(500).send('Error deleting car')
@@ -85,6 +87,7 @@ const add = async (req, res) => {
     const savedCar = await newCar.save()
 
     console.log(`Car added successfully: ${savedCar._id}`)
+    return res.status(201).send('car have been added')
   } catch (error) {
     console.error('Error adding car:', error)
     res.status(500).send('Error adding car')

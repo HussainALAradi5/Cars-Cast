@@ -1,15 +1,4 @@
-/* it contain the car details:
-h1: make-model-year
-image
-li:
-color
-transmission
-engine
-mileage
-price
-border bottom
-car reviews
-*/ import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
@@ -25,6 +14,7 @@ const CarDetails = () => {
       try {
         const response = await axios.get(`http://localhost:3001/car/${carId}`)
         setCar(response.data)
+        console.log('response.data=', response.data)
       } catch (err) {
         console.error('Error fetching car details:', err)
         setError(err)
@@ -33,10 +23,10 @@ const CarDetails = () => {
     }
 
     fetchData()
-  }, [carId])
+  }, [])
 
   if (isLoading) {
-    return <p>Loading car details...</p>
+    return <p className="loadingCarDetails">Loading car details...</p>
   }
 
   if (error) {
