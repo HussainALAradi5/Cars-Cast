@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 
 const Car = (props) => {
+  const id = props.id
   return (
-    <Link to={`/car/${carId}`}>
+    <Link to={`/car/${id}`}>
       <div className="card" onClick={props.onClick}>
         <div className="img-wrapper">
           <img src={props.image} alt={`${props.make}-${props.model}`} />
