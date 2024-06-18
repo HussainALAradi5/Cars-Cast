@@ -1,4 +1,6 @@
 import CarDetails from '../components/CarDetails'
+import Car from '../components/Car'
+import Search from '../components/Search'
 import Nav from '../components/Nav'
 import '../home.css'
 import '../App.css'
@@ -39,6 +41,11 @@ const Home = () => {
       <h1 className="homeHeader">welcome to our rental car project!</h1>
       <Nav />
 
+      <Search
+        value={searchValue}
+        onChange={handleChange}
+        onSubmit={getSearchResults}
+      />
       <div className="cars">
         <h2>Pick a Car !</h2>
         <section className="container-grid">
