@@ -11,8 +11,11 @@ border bottom
 car reviews
 */ import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
-const CarDetails = ({ carId }) => {
+const CarDetails = () => {
+  const carId = useParams().id
+  console.log('carID frontEnd=', carId)
   const [car, setCar] = useState('')
   const [isLoading, setIsLoading] = useState(true) //to display some freindly loading screen for the user in order to achive UX (^_^)
   const [error, setError] = useState('')
