@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import Receipts from './Receipts'
 
 const CarDetails = () => {
   const carId = useParams().id
@@ -9,6 +10,11 @@ const CarDetails = () => {
   const [car, setCar] = useState('')
   const [isLoading, setIsLoading] = useState(true) //to display some freindly loading screen for the user in order to achive UX (^_^)
   const [error, setError] = useState('')
+
+  // State variables for rental details
+  const [rentalDays, setRentalDays] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [showReceipt, setShowReceipt] = useState(false) // Flag to control receipt display
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,8 +52,20 @@ const CarDetails = () => {
   const transmission = car.transmission
   const engine = car.engine
   const mileage = car.mileage
-  const price = car.price
-  const reviews = car.reviews
+  const pricePerDay = car.price // pay per day
+
+  const handleRentalDaysChange = (event) => {
+    const days = parseInt(event.target.value)
+    setRentalDays(days)
+    setTotalPrice(days * pricePerDay)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    setShowReceipt(true)
+  }
+
   const formattedHorsePower = car.horsePower
     ? `${car.horsePower} HorsePower`
     : 'N/A'
@@ -62,22 +80,28 @@ const CarDetails = () => {
         <li>Transmission: {transmission}</li>
         <li>Engine: {engine}</li>
         <li>Mileage: {mileage} miles</li>
-        <li>Price: ${price.toFixed(2)}</li>
-
-        {/* JS built in function to fix the decimals and then convert the whole number into string (^_^) */}
+        <li>Price per Day: ${pricePerDay.toFixed(2)}</li>
       </ul>
-      {<button>Buy Now</button>} <hr />
-      <h2>Car Reviews</h2>
-      {reviews.length > 0 ? (
-        <ul>
-          {reviews.map((review) => (
-            <li key={review._id}>
-              {review.uid} review:{review.review}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No reviews available.</p>
+
+      {/* Form to enter rental days */}
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="rentalDays">Number of rental days: </label>
+        <input
+          type="number"
+          id="rentalDays"
+          min="1"
+          value={rentalDays}
+          onChange={handleRentalDaysChange}
+        />
+        <button type="submit">Rent Now</button>
+      </form>
+
+      {showReceipt && (
+        <Receipts
+          car={car}
+          rentalDays={rentalDays}
+          totalPrice={pricePerDay * rentalDays}
+        />
       )}
     </div>
   )
