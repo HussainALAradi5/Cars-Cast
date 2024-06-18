@@ -3,30 +3,20 @@ const User = require('../models/user')
 const { Receipt } = require('../models/receipt')
 
 const show = async (req, res) => {
-  const receipt = await Receipt.find({})
-  console.log('receipt=' + receipt)
-  const carId = req.params.id // Use id from request params
-  console.log('carId=' + carId)
-  const userId = req.params._id
-
   try {
-    const reciept = await Receipt.findById(req.params.id)
-    consolg.log(receipt)
-    res.render(`reciept/show`, { title: 'Reciepts Details', reciept })
-    const car = await Car.findById(carId)
-    const user = await User.findById(userId)
-    const rentalDetails = await Car.findOne({ id: rentalDetails.id })
-    const carDetails = await Car.findOne({ id: carDetails.id })
+    const receiptId = req.params.id
+    const receipt = await Receipt.findById(receiptId).populate('car')
 
-    if (car && user) {
-      const userName = req.params.userName
-      const rentalDetails = req.params.rentalDetails
-
-      console.log(userName, rentalDetails)
+    if (!receipt) {
+      return res.status(404).send('Receipt not found')
     }
+
+    console.log('Receipt:', receipt)
+
+    res.render('receipts/show', { title: 'Receipt Details', receipt })
   } catch (error) {
-    console.error('Error fetching car details:', error)
-    res.status(500).send('Error fetching car details')
+    console.error('Error fetching receipt details:', error)
+    res.status(500).send('Error fetching receipt details')
   }
 }
 
