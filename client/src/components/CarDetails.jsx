@@ -63,8 +63,11 @@ const CarDetails = () => {
         <li>Engine: {engine}</li>
         <li>Mileage: {mileage} miles</li>
         <li>Price: ${price.toFixed(2)}</li>
+
         {/* JS built in function to fix the decimals and then convert the whole number into string (^_^) */}
       </ul>
+      {/*       <button onClick={handleBuyNow}>Buy Now</button>
+       */}{' '}
       <hr />
       <h2>Car Reviews</h2>
       {reviews.length > 0 ? (
