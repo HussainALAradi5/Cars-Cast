@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
-const Receipt = () => {
+const Receipts = (props) => {
+  const { car, rentalDays, totalPrice } = props
   const { id } = useParams()
   const [receipt, setReceipt] = useState(null)
 
@@ -29,12 +30,12 @@ const Receipt = () => {
       <p>Receipt ID: {receipt.rid}</p>
       <p>User ID: {receipt.uid}</p>
       <p>User Name: {receipt.userName}</p>
-      <p>Car ID: {receipt.cid}</p>
-      <p>Car Model: {receipt.car.model}</p>
-      <p>Number of Days: {receipt.rentalDetails.numberOfDays}</p>
-      <p>Total Price: {receipt.rentalDetails.totalPrice}</p>
+      <p>Car ID: {car.id}</p>
+      <p>Car Model: {car.model}</p>
+      <p>Number of Days: {rentalDays}</p>
+      <p>Total Price: {totalPrice}</p>
     </div>
   )
 }
 
-export default Receipt
+export default Receipts
