@@ -1,12 +1,36 @@
 const User = require('../models/user')
-
+const middleware = require('../middleware/index')
 // Error handling function (DRY )
 const errorsCatch = (err, res) => {
   console.error(err)
   console.log('Error message:', err.message) // Log the error message for debugging
   res.status(500).render('error', { error: 'An error occurred' })
 }
+const add = async (req, res) => {
+  try {
+    const newUser = req.body
 
+    const existEmail = await User.findOne({ email: newUser.email })
+
+    if (existEmail) {
+      return res.status(409).send('Email already exists')
+    }
+    let passwordDigest = await middleware.hashPassword(newUser.password)
+
+    const user = new User({
+      userName: newUser.userName,
+      email: newUser.email,
+      passwordDigest
+    })
+    const savedUser = await user.save()
+
+    console.log(`user added successfully: ${savedUser._id}`)
+    return res.status(201).send('user have been added')
+  } catch (error) {
+    console.error('Error adding user:', error)
+    res.status(500).send('Error adding user')
+  }
+}
 // Update(Edit a user details using form)
 const edit = async (req, res) => {
   try {
@@ -97,5 +121,6 @@ module.exports = {
   edit,
   update,
   show,
-  remove: deleteUser
+  remove: deleteUser,
+  create: add
 }

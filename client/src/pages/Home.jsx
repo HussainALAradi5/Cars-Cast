@@ -11,11 +11,11 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState([])
   const [searched, toggleSearched] = useState(false)
   const [searchValue, setSearchValue] = useState('')
-
+  const url = 'http://localhost:3001/'
   useEffect(() => {
     const getCars = async () => {
       try {
-        const response = await axios.get(`https://freetestapi.com/api/v1/cars`)
+        const response = await axios.get(url)
         setCars(response.data)
       } catch (error) {
         console.error('Error fetching cars:', error)
@@ -26,9 +26,7 @@ const Home = () => {
 
   const getSearchResults = async (e) => {
     e.preventDefault()
-    const response = await axios.get(
-      `https://freetestapi.com/api/v1/cars?search=${searchValue}`
-    )
+    const response = await axios.get(`${url}${searchValue}`)
     setSearchResults(response.data)
     toggleSearched(true)
     setSearchValue('')
@@ -60,7 +58,7 @@ const Home = () => {
                 year={data.year}
                 image={data.image}
                 price={data.price}
-                onClick={() => handleCarsClick(data.id)}
+                // onClick={() => handleCarsClick(data.id)}
                 //reviewslinkwillbeadded
               />
             ))}

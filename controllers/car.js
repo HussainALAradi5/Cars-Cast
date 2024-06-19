@@ -31,7 +31,7 @@ const index = async (req, res) => {
 
     console.log(`Saved ${savedCars.length} cars to database`)
     console.log('Saved cars details:', savedCars)
-    res.sendStatus(200)
+    res.status(200).send(dbCars)
   } catch (error) {
     console.error('Error fetching or saving cars:', error)
     res.status(500).send('Error fetching or saving cars')
@@ -54,7 +54,26 @@ const show = async (req, res) => {
     res.status(500).send('Error fetching car details')
   }
 }
+const search = async (req, res) => {
+  const searchQuery = req.params.query
+  console.log('searchQuery', searchQuery)
+  try {
+    const car = await Car.find({
+      $or: [
+        { model: { $regex: searchQuery, $options: 'i' } },
+        { make: { $regex: searchQuery, $options: 'i' } }
+      ]
+    })
+    if (!car) {
+      return res.status(404).send('Car not found')
+    }
 
+    return res.status(200).send(car)
+  } catch (error) {
+    console.error('Error fetching car details:', error)
+    res.status(500).send('Error fetching car details')
+  }
+}
 const remove = async (req, res) => {
   const carId = req.params.id // pull the id from params
 
@@ -98,5 +117,6 @@ module.exports = {
   index,
   show,
   remove,
-  new: add
+  new: add,
+  search
 }
