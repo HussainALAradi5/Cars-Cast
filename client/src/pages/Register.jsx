@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import Nav from '../components/Nav'
+import { RegisterUser } from '../services/Auth'
+
 const Register = () => {
   const navigate = useNavigate()
 
@@ -17,6 +18,7 @@ const Register = () => {
       [event.target.name]: event.target.value
     })
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({
@@ -24,17 +26,18 @@ const Register = () => {
       email: formValues.email,
       password: formValues.password
     })
+    console.log('register:', RegisterUser)
     setFormValues({
       userName: '',
       email: '',
       password: '',
       confirmPassword: ''
     })
-    navigate('/signin')
+    navigate('/user/login')
   }
+
   return (
     <div className="register">
-      <Nav />
       <form className="handleRegisterSubmit" onSubmit={handleSubmit}>
         <label htmlFor="userName">Name</label>
         <input

@@ -1,7 +1,6 @@
 import CarDetails from '../components/CarDetails'
 import Car from '../components/Car'
 import Search from '../components/Search'
-import Nav from '../components/Nav'
 import '../home.css'
 import '../App.css'
 import { useEffect, useState } from 'react'
@@ -37,7 +36,6 @@ const Home = () => {
   return (
     <div className="homePage">
       <h1 className="homeHeader">welcome to our rental car project!</h1>
-      <Nav />
 
       <Search
         value={searchValue}
@@ -66,7 +64,6 @@ const Home = () => {
         </div>
       ) : (
         <div className="cars">
-          <h2>NOT FOUND ! Please Try Again !</h2>
           <section className="container-grid">
             {cars.map((car) => (
               <Car
