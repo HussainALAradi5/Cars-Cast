@@ -66,7 +66,6 @@ const Home = () => {
         </div>
       ) : (
         <div className="cars">
-          <h2>NOT FOUND ! Please Try Again !</h2>
           <section className="container-grid">
             {cars.map((car) => (
               <Car
