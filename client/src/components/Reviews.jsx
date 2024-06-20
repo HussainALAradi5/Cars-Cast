@@ -1,8 +1,14 @@
 const Reviews = () => {
   return (
-    <>
-      <h1></h1>
-    </>
+    <div>
+      <form>
+        <textarea
+          name="reviews"
+          className="reviews"
+          placeholder="Place your review!"
+        ></textarea>
+      </form>
+    </div>
   )
 }
 
