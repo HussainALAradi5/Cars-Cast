@@ -20,6 +20,7 @@ const Nav = ({ user, handleLogOut }) => {
             <button>History</button>
           </Link>
         </li>
+
         <li>
           <Link onClick={handleLogOut} to="/">
             Sign Out
@@ -51,6 +52,11 @@ const Nav = ({ user, handleLogOut }) => {
         <Link to="/about">
           <button>About us</button>
         </Link>
+      </li>
+      <li>
+        <button>
+          <span className="material-symbols-outlined">palette</span>
+        </button>
       </li>
     </ul>
   )
