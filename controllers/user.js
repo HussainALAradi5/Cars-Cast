@@ -142,6 +142,7 @@ const deleteUser = async (req, res) => {
 }
 
 module.exports = {
+  login,
   edit,
   update,
   show,
