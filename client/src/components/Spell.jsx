@@ -9,14 +9,21 @@ const Spell = () => {
   useEffect(() => {
     const fetchSpell = async () => {
       try {
+        // Check if spell data is stored in local storage
+        const storedSpell = localStorage.getItem('randomSpell')
+        if (storedSpell) {
+          setSpell(JSON.parse(storedSpell)) // Use stored data
+          return // Early exit if data is retrieved from storage
+        }
+
+        // Fetch spell data if not stored
         const response = await axios.get(url)
         const spells = response.data
-        const chooseSepll = Math.floor(Math.random() * spells.length)
-        const randomSpell = spells[chooseSepll]
-        setSpell({
-          name: randomSpell.name,
-          description: randomSpell.description
-        })
+        const randomSpell = spells[Math.floor(Math.random() * spells.length)]
+        setSpell(randomSpell)
+
+        // Store the fetched spell data in local storage
+        localStorage.setItem('randomSpell', JSON.stringify(randomSpell))
       } catch (error) {
         console.error('Error fetching spell:', error)
       }
@@ -26,7 +33,7 @@ const Spell = () => {
   }, [])
 
   const toggleContent = () => {
-    setShowDescription(!showDescription) // track the description to hide it or not(replace it with the name of the spell)
+    setShowDescription(!showDescription) // Track the description to hide it or not(replace it with the name of the spell)
   }
 
   const displayedContent = showDescription ? spell.description : spell.name

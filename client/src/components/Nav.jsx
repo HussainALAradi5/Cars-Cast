@@ -8,7 +8,7 @@ const Nav = ({ user, handleLogOut }) => {
         <li>
           <Link to="/">
             <button>
-              <span class="material-symbols-outlined">home</span>Home
+              <span className="material-symbols-outlined">home</span>Home
             </button>
           </Link>
         </li>
@@ -37,7 +37,7 @@ const Nav = ({ user, handleLogOut }) => {
       <li>
         <Link to="/">
           <button>
-            <span class="material-symbols-outlined">home</span>Home
+            <span className="material-symbols-outlined">home</span>Home
           </button>
         </Link>
       </li>
@@ -45,14 +45,15 @@ const Nav = ({ user, handleLogOut }) => {
       <li>
         <Link to="/login">
           <button>
-            <span class="material-symbols-outlined">person</span>Login
+            <span className="material-symbols-outlined">person</span>Login
           </button>
         </Link>
       </li>
       <li>
         <Link to="/register">
           <button>
-            <span class="material-symbols-outlined">person_add</span>Register
+            <span className="material-symbols-outlined">person_add</span>
+            Register
           </button>
         </Link>
       </li>
