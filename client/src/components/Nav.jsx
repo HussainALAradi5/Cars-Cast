@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-
+import Spell from './Spell'
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
   if (user) {
@@ -60,7 +60,7 @@ const Nav = ({ user, handleLogOut }) => {
     <header>
       {' '}
       <div className="nav">
-        <h2 className="spell">Spell of the day:</h2>
+        <Spell />
         <br />
       </div>
       {user ? userOptions : publicOptions}
