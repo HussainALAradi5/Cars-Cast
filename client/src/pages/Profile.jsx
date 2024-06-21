@@ -17,7 +17,7 @@ const Profile = () => {
       <input type="file" onChange={handleImage} />
       <img src={pimg} />
 
-      <button>Update Profile</button>
+      <button type="submit">Update Profile</button>
     </div>
   )
 }
