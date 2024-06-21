@@ -4,11 +4,12 @@ const Car = (props) => {
   const id = props.id
   return (
     <div>
-      <Link to={`/car/${id}`}>
-        <div className="card" onClick={props.onClick}>
+      <div className="card">
+        <Link to={`/car/${id}`}>
           <div className="img-wrapper">
             <img src={props.image} alt={`${props.make}-${props.model}`} />
           </div>
+
           <div className="info-wrapper  flex-col">
             <h3>
               {props.make}
@@ -21,8 +22,8 @@ const Car = (props) => {
             <p>//reviews link to be added</p>
             <button onClick="">Rent</button>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>{' '}
     </div>
   )
 }

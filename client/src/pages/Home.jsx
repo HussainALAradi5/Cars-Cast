@@ -73,7 +73,7 @@ const Home = () => {
                 year={car.year}
                 image={car.image}
                 price={car.price}
-                onClick={() => handleCarsClick(car.id)}
+                /* onClick={() => handleCarsClick(car.id)} */
                 //reviewslinkwillbeadded
               />
             ))}
