@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Nav from '../components/Nav'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Receipts from './Receipts'
@@ -72,7 +71,6 @@ const CarDetails = () => {
 
   return (
     <div>
-      <Nav />
       <h1 className="carHeader">{`${make}-${model}-(${year})`}</h1>
       <img src={image} alt={`${make}-${model}-(${year})`} />
       <ul>

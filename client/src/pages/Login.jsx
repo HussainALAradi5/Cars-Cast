@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import Nav from '../components/Nav'
 import { useState } from 'react'
+import { SignInUser } from '../services/Auth'
+
 const Login = () => {
   const navigate = useNavigate()
 
@@ -20,7 +21,6 @@ const Login = () => {
 
   return (
     <div className="signin">
-      <Nav />
       <form className="logInForm" onSubmit={handleSubmit}>
         <div className="loginInput">
           <label htmlFor="email">Email</label>
