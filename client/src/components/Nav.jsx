@@ -53,11 +53,6 @@ const Nav = ({ user, handleLogOut }) => {
           <button>About us</button>
         </Link>
       </li>
-      <li>
-        <button>
-          <span className="material-symbols-outlined">palette</span>
-        </button>
-      </li>
     </ul>
   )
 

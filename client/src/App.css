@@ -1,7 +1,10 @@
 * {
   font-family: monospace;
+  color: white;
 }
-label{color: black;}
+label {
+  color: black;
+}
 body {
   font-family: monospace;
   font-size: 1rem;
@@ -130,12 +133,4 @@ input::placeholder {
 input:focus {
   background: darkblue;
   transition: 1.5s;
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
 }
