@@ -138,3 +138,13 @@ input:focus {
   cursor: pointer;
   color: black;
 }
+
+.material-symbols-outlined {
+  font-size: 1.2rem;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+
+}
