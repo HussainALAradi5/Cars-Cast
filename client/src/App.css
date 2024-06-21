@@ -1,6 +1,9 @@
 * {
   font-family: monospace;
-  color: white;
+  color: whitesmoke;
+}
+label {
+  color: black;
 }
 label {
   color: black;
