@@ -44,7 +44,8 @@ const Home = () => {
       {searched ? (
         <div className="search">
           <h2>Search Results : </h2>
-          <section className="search-results-grid">
+          <br />
+          <section className="search-results-flex">
             {searchResults.map((data) => (
               <Car
                 key={data.id}

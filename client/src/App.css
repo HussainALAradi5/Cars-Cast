@@ -1,14 +1,17 @@
 * {
-  color: whitesmoke;
+  font-family: monospace;
 }
 body {
   font-family: monospace;
   font-size: 1rem;
   overflow: scroll;
   margin: 0;
-  background: url('../images/rental1.jpg');
+  /*   background: url('../images/rental1.jpg');
+  background-size: cover; */
+  /* background: gold; */
+  /*  background: url('  https://getwallpapers.com/wallpaper/full/5/6/6/1348208-vertical-very-cool-car-wallpapers-2560x1600-notebook.jpg'); */
+  background: url('https://images5.alphacoders.com/101/1016544.jpg');
   background-size: cover;
-
   font-weight: bolder;
   display: flex;
   flex-direction: row;
@@ -52,18 +55,25 @@ img {
   margin: 1rem;
   margin-right: 2rem;
   background: #333333;
-  opacity: 0.6;
   border-radius: 2rem;
+}
+.search-results-flex{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 .card:hover {
   box-shadow: 1rem 1rem 1rem royalblue;
   transition: 1.5s;
   background: black;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .homeHeader {
   display: flex;
-  color: orange;
+  color: darkblue;
   font-weight: 900;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -80,7 +90,7 @@ img {
   border-bottom: 0.4rem solid blue;
 }
 .spell {
-  color: orange;
+  color: red;
   font-family: monospace;
 }
 .spell:hover {
@@ -111,6 +121,7 @@ button:hover {
 input {
   padding: 0.6rem;
   background: royalblue;
+  color: white;
 }
 input::placeholder {
   color: white;
