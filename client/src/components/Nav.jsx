@@ -7,7 +7,9 @@ const Nav = ({ user, handleLogOut }) => {
       <ul className="listNav">
         <li>
           <Link to="/">
-            <button>Home</button>
+            <button>
+              <span class="material-symbols-outlined">home</span>Home
+            </button>
           </Link>
         </li>
         <li>
@@ -34,18 +36,24 @@ const Nav = ({ user, handleLogOut }) => {
     <ul className="listNav">
       <li>
         <Link to="/">
-          <button>Home</button>
+          <button>
+            <span class="material-symbols-outlined">home</span>Home
+          </button>
         </Link>
       </li>
 
       <li>
         <Link to="/login">
-          <button>Login</button>
+          <button>
+            <span class="material-symbols-outlined">person</span>Login
+          </button>
         </Link>
       </li>
       <li>
         <Link to="/register">
-          <button>Register</button>
+          <button>
+            <span class="material-symbols-outlined">person_add</span>Register
+          </button>
         </Link>
       </li>
       <li>
