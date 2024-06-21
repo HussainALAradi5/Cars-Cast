@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { SignInUser } from '../services/Auth'
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const navigate = useNavigate()
-
+  const Login = { setUser }
   const [formValues, setFormValues] = useState({ email: '', password: '' })
 
   const handleChange = (e) => {

@@ -34,7 +34,7 @@ const add = async (req, res) => {
   }
 }
 //user login
-const Login = async (req, res) => {
+const login = async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email })
@@ -146,5 +146,6 @@ module.exports = {
   update,
   show,
   remove: deleteUser,
-  create: add
+  create: add,
+  login
 }
