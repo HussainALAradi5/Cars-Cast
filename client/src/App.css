@@ -134,3 +134,7 @@ input:focus {
   background: darkblue;
   transition: 1.5s;
 }
+.spellHeader{
+  cursor: pointer;
+  color: black;
+}
