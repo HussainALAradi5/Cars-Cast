@@ -5,7 +5,6 @@ import Receipts from './Receipts'
 
 const CarDetails = () => {
   const carId = useParams().id
-  console.log('carID frontEnd=', carId)
   const [car, setCar] = useState('')
   const [isLoading, setIsLoading] = useState(true) //to display some freindly loading screen for the user in order to achive UX (^_^)
   const [error, setError] = useState('')
@@ -20,7 +19,6 @@ const CarDetails = () => {
       try {
         const response = await axios.get(`http://localhost:3001/car/${carId}`)
         setCar(response.data)
-        console.log('response.data=', response.data)
       } catch (err) {
         console.error('Error fetching car details:', err)
         setError(err)

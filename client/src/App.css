@@ -1,16 +1,19 @@
+* {
+  color: whitesmoke;
+}
 body {
   font-family: monospace;
   font-size: 1rem;
-  overflow:scroll;
+  overflow: scroll;
   margin: 0;
   background: url('../images/rental1.jpg');
   background-size: cover;
-  color: rgb(188, 38, 188);
+
   font-weight: bolder;
   display: flex;
   flex-direction: row;
-
 }
+
 ul {
   list-style-type: none;
   margin-left: 0;
@@ -19,34 +22,46 @@ ul {
   list-style: none;
   gap: 1rem;
 }
-img{
+img {
   min-width: 256px;
   min-height: 256px;
   max-width: 400px;
   max-height: 400px;
   gap: 2rem;
 }
-.listNav{
+.listNav {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-margin-left: 1rem;
+  margin-left: 1rem;
 }
-.container-grid{
- /*  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap; */
+.container-grid {
+
   width: 100vw;
   height: 100vh;
   display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-auto-rows: minmax(auto, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(auto, 1fr);
+}
+.card {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+  margin: 1rem;
+  background: #333333;
+}
+.card:hover {
+  box-shadow: 1rem 1rem 1rem gold;
+  transition: 1.5s;
+  background: gray;
+  opacity: 0.5;
 }
 .homeHeader {
   display: flex;
   justify-content: center;
+  color: whitesmoke;
 }
 .nav {
   display: flex;
@@ -78,13 +93,14 @@ grid-auto-rows: minmax(auto, 1fr);
 }
 button {
   padding: 0.6rem;
-  background: linear-gradient(to right, blue, purple);
+  background: royalblue;
   color: white;
   cursor: pointer;
   font-family: monospace;
 }
 button:hover {
   border-radius: 0.4rem;
-  background: black;
+  background: darkblue;
   transition: 1.5s;
+  box-shadow: 1rem 1rem 1rem black;
 }
