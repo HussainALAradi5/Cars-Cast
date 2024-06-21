@@ -1,7 +1,6 @@
 import CarDetails from '../components/CarDetails'
 import Car from '../components/Car'
 import Search from '../components/Search'
-import '../home.css'
 import '../App.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
