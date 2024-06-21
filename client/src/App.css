@@ -12,6 +12,7 @@ body {
   font-weight: bolder;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 ul {
@@ -36,7 +37,6 @@ img {
   margin-left: 1rem;
 }
 .container-grid {
-
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -50,18 +50,22 @@ img {
   padding: 1rem;
   gap: 1rem;
   margin: 1rem;
+  margin-right: 2rem;
   background: #333333;
+  opacity: 0.6;
+  border-radius: 2rem;
 }
 .card:hover {
-  box-shadow: 1rem 1rem 1rem gold;
+  box-shadow: 1rem 1rem 1rem royalblue;
   transition: 1.5s;
-  background: gray;
-  opacity: 0.5;
+  background: black;
+  opacity: 0.8;
 }
 .homeHeader {
   display: flex;
-  justify-content: center;
-  color: whitesmoke;
+  color: orange;
+  font-weight: 900;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .nav {
   display: flex;
@@ -99,8 +103,19 @@ button {
   font-family: monospace;
 }
 button:hover {
-  border-radius: 0.4rem;
+  border-radius: 0.8rem;
   background: darkblue;
   transition: 1.5s;
   box-shadow: 1rem 1rem 1rem black;
+}
+input {
+  padding: 0.6rem;
+  background: royalblue;
+}
+input::placeholder {
+  color: white;
+}
+input:focus {
+  background: darkblue;
+  transition: 1.5s;
 }

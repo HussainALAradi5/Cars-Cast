@@ -1,4 +1,3 @@
-import CarDetails from '../components/CarDetails'
 import Car from '../components/Car'
 import Search from '../components/Search'
 import '../App.css'

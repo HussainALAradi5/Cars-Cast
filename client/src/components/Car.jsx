@@ -23,7 +23,7 @@ const Car = (props) => {
             <button onClick="">Rent</button>
           </div>
         </Link>
-      </div>{' '}
+      </div>
     </div>
   )
 }
