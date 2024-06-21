@@ -20,6 +20,7 @@ const Nav = ({ user, handleLogOut }) => {
             <button>History</button>
           </Link>
         </li>
+
         <li>
           <Link onClick={handleLogOut} to="/">
             Sign Out
