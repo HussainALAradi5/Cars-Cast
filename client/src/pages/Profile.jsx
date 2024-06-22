@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Profile = () => {
+const Profile = ({ user }) => {
   const [pimg, setPimg] = useState()
   function handleImage(e) {
     setPimg(URL.createObjectURL(e.target.files[0]))

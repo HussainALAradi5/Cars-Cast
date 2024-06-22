@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom'
-import Spell from './Spell'
-import Weather from './Weather'
 import ApisContainer from './ApisContainer'
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
@@ -17,6 +15,11 @@ const Nav = ({ user, handleLogOut }) => {
         <li>
           <Link to="/about">
             <button>About us</button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/profile">
+            <button>Profile</button>
           </Link>
         </li>
         <li>
