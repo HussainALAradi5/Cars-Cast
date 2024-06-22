@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const multer = require('multer')
 
-require('dotenv').config
+require('dotenv').config()
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
 const APP_SECRET = process.env.APP_SECRET
 
@@ -23,6 +23,26 @@ const hashPassword = async (password) => {
   let hashPassword = await bcrypt.hash(password, SALT_ROUNDS) //create hashed password with nth times encrypts
   return hashPassword
 }
+const getUserIdFromToken = (token) => {
+  if (!token) {
+    console.log('No token found')
+    return null
+  }
+
+  try {
+    const decoded = jwt.decode(token)
+    console.log(decoded)
+    // Extract the user ID from the payload
+    const userId = decoded.id
+
+    console.log('User ID:', userId)
+
+    return userId
+  } catch (error) {
+    console.error('Error decoding token:', error)
+    return null
+  }
+}
 const comparePassword = async (storedPassword, password) => {
   //read both passwords,the login and the storedOne to compare both
   let passwordMatch = await bcrypt.compare(password, storedPassword)
@@ -31,6 +51,7 @@ const comparePassword = async (storedPassword, password) => {
 }
 const createToken = (payload) => {
   //create token using the payload
+  console.log('app_secret:', APP_SECRET)
   let token = jwt.sign(payload, APP_SECRET)
   //generate the token and encrypt it and return the token if the process finilize
   return token
@@ -69,4 +90,6 @@ module.exports = {
   comparePassword,
   hashPassword,
   upload
+=======
+  getUserIdFromToken
 }

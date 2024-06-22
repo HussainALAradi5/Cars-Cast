@@ -77,6 +77,10 @@ const Profile = ({ user, setUser }) => {
           onChange={handleChange}
         />
 
+      <input id="email" type="text" placeholder="Type your New Email" />
+      <input id="username" type="text" placeholder="Type your New UserName" />
+      <input id="password" type="text" placeholder="Type your New Password" />
+
         <h2>Upload Profile Picture:</h2>
         <input type="file" onChange={handleImage} />
         {img && <img src={img} alt="Profile Preview" />}

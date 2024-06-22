@@ -76,6 +76,54 @@ const show = async (req, res) => {
       return res.status(404).render('error', { error: 'User not found' })
     }
     console.log('User profile:', user)
+=======
+  try {
+    const userId = req.params.id
+    const user = await User.findById(userId)
+    if (!user) {
+      console.log('User not found:', userId)
+      return res.status(404).render('error', { error: 'User not found' })
+    }
+    console.log('User details for editing:', user)
+    res.render(`editUser`, { user })
+  } catch (err) {
+    errorsCatch(err, res)
+  }
+}
+// Display user profile
+const show = async (req, res) => {
+  try {
+    const userId = req.params.id
+    const user = await User.findById(userId)
+    if (!user) {
+      console.log('User not found:', userId)
+      return res.status(404).render('error', { error: 'User not found' })
+    }
+    console.log('User profile:', user)
+  } catch (err) {
+    errorsCatch(err, res)
+  }
+}
+const update = async (req, res) => {
+  try {
+    const userId = req.params.id
+    const updates = req.body
+    const userName = updates.userName
+    const email = updates.email
+    console.log(`userName:${userName}\nemail:${email}`)
+    userName.trim()
+    email.trim()
+    const updatedUser = await User.findByIdAndUpdate(userId, updates, {
+      new: true,
+      runValidators: true
+    })
+    if (!updatedUser) {
+      console.log('User not found or update failed:', userId)
+      return res
+        .status(400)
+        .render('error', { error: 'User not found or update failed' })
+    }
+    console.log('User updated successfully:', updatedUser)
   } catch (err) {
     errorsCatch(err, res)
   }
@@ -104,6 +152,7 @@ const update = async (req, res) => {
     res.status(500).json({ error: 'Error updating profile' })
   }
 }
+=======
 // Soft-delete (deactivates user insted of removing it from the DB)
 const deleteUser = async (req, res) => {
   try {

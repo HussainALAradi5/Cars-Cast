@@ -4,7 +4,6 @@ const cors = require('cors')
 const path = require('path')
 
 const carRouter = require('./routes/car')
-const daySpellRouter = require('./routes/daySpells')
 const indexRouter = require('./routes/index')
 const userRouter = require('./routes/user')
 const User = require('./models/user')

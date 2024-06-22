@@ -8,7 +8,7 @@ import Login from './pages/Login'
 import Nav from './components/Nav'
 import Profile from './pages/Profile'
 import { CheckSession } from './services/Auth'
-
+import Reviews from './components/Reviews'
 const App = () => {
   console.log()
   const [user, setUser] = useState(null)
@@ -40,6 +40,9 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/profile/:id" element={<Profile user={user} />} />
+=======
+          <Route path="/profile" element={<Profile user={user} />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Routes>
       </BrowserRouter>
     </div>

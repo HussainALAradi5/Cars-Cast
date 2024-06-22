@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Receipts from './Receipts'
-
+import Reviews from './Reviews'
 const CarDetails = () => {
   const carId = useParams().id
   const [car, setCar] = useState('')
@@ -91,7 +91,7 @@ const CarDetails = () => {
         />
         <button type="submit">Rent Now</button>
       </form>
-
+      <Reviews carId={carId} />
       {showReceipt && (
         <Receipts
           car={car}
