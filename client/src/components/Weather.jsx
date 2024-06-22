@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
 const Weather = () => {
   const [city, setCity] = useState('Manama') // Make Manama the default since Bahrain is small (just kidding🤣🤣 )
   const [weather, setWeather] = useState({
@@ -8,8 +7,7 @@ const Weather = () => {
     temp_c: '',
     condition: ''
   })
-  const apiKey = import.meta.env.WEATHER_APIKEY // Import API key from secret location(yes you know it and smile i can see that 😂)
-  console.log('API Key:', import.meta.env.WEATHER_APIKEY)
+  const apiKey = import.meta.env.VITE_WEATHER_APIKEY // Import API key from secret location(yes you know it and smile i can see that 😂)
   const [tempUnit, setTempUnit] = useState('celsius') // The initial unit
   const [errorMessage, setErrorMessage] = useState('') // State for error messages
 
@@ -22,7 +20,6 @@ const Weather = () => {
   }
 
   const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
-  console.log('url:', url)
   useEffect(() => {
     const fetchWeather = async () => {
       try {
