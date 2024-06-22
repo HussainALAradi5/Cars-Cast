@@ -42,13 +42,14 @@ const login = async (req, res) => {
       user.passwordDigest,
       password
     )
-
+    console.log('matched:', matched)
     if (matched) {
       let payload = {
         id: user.id,
         email: user.email
       }
       let token = middleware.createToken(payload)
+      console.log('token:', token)
       return res.send({ user: payload, token })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
@@ -104,6 +105,40 @@ const deleteUser = async (req, res) => {
     }
 
     console.log('User deactivated successfully:', deactivatedUser)
+  } catch (err) {
+    errorsCatch(err, res)
+  }
+}
+// Update(Edit a user details using form)
+const edit = async (req, res) => {
+  try {
+    const userId = req.params.id
+    const user = await User.findById(userId)
+
+    if (!user) {
+      console.log('User not found:', userId)
+      return res.status(404).render('error', { error: 'User not found' })
+    }
+
+    console.log('User details for editing:', user)
+    res.render(`editUser`, { user })
+  } catch (err) {
+    errorsCatch(err, res)
+  }
+}
+
+// Display user profile
+const show = async (req, res) => {
+  try {
+    const userId = req.params.id
+    const user = await User.findById(userId)
+
+    if (!user) {
+      console.log('User not found:', userId)
+      return res.status(404).render('error', { error: 'User not found' })
+    }
+
+    console.log('User profile:', user)
   } catch (err) {
     errorsCatch(err, res)
   }

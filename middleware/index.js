@@ -16,6 +16,7 @@ const comparePassword = async (storedPassword, password) => {
 }
 const createToken = (payload) => {
   //create token using the payload
+  console.log('app_secret:', APP_SECRET)
   let token = jwt.sign(payload, APP_SECRET)
   //generate the token and encrypt it and return the token if the process finilize
   return token

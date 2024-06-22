@@ -12,9 +12,9 @@ const Profile = ({ user }) => {
   return user ? (
     <div>
       <h1>Account Setting</h1>
-      <input id="email" type="text" />
-      <input id="username" type="text" />
-      <input id="password" type="text" />
+      <input id="email" type="text" placeholder="Type your New Email" />
+      <input id="username" type="text" placeholder="Type your New UserName" />
+      <input id="password" type="text" placeholder="Type your New Password" />
 
       <h2>Upload Profile Picture:</h2>
       <input type="file" onChange={handleImage} />
