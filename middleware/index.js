@@ -1,8 +1,23 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const multer = require('multer')
+
 require('dotenv').config()
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
 const APP_SECRET = process.env.APP_SECRET
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/') // specify the directory to store uploaded files
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
+    cb(null, file.fieldname + '-' + uniqueSuffix) // specify the filename format
+  }
+})
+
+const upload = multer({ storage: storage })
+
 const hashPassword = async (password) => {
   //read new password
   let hashPassword = await bcrypt.hash(password, SALT_ROUNDS) //create hashed password with nth times encrypts
@@ -67,11 +82,14 @@ const stripToken = (req, res, next) => {
     res.status(401).send({ status: 'Error', msg: 'Strip Token Error!' })
   }
 }
+
 module.exports = {
   stripToken,
   verifyToken,
   createToken,
   comparePassword,
   hashPassword,
+  upload
+=======
   getUserIdFromToken
 }

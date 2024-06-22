@@ -76,6 +76,30 @@ const show = async (req, res) => {
       return res.status(404).render('error', { error: 'User not found' })
     }
     console.log('User profile:', user)
+=======
+  try {
+    const userId = req.params.id
+    const user = await User.findById(userId)
+    if (!user) {
+      console.log('User not found:', userId)
+      return res.status(404).render('error', { error: 'User not found' })
+    }
+    console.log('User details for editing:', user)
+    res.render(`editUser`, { user })
+  } catch (err) {
+    errorsCatch(err, res)
+  }
+}
+// Display user profile
+const show = async (req, res) => {
+  try {
+    const userId = req.params.id
+    const user = await User.findById(userId)
+    if (!user) {
+      console.log('User not found:', userId)
+      return res.status(404).render('error', { error: 'User not found' })
+    }
+    console.log('User profile:', user)
   } catch (err) {
     errorsCatch(err, res)
   }
@@ -104,6 +128,31 @@ const update = async (req, res) => {
     errorsCatch(err, res)
   }
 }
+const update = async (req, res) => {
+  try {
+    const userId = req.params.id
+    const updateData = {
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password
+        ? await bcrypt.hash(
+            req.body.password,
+            parseInt(process.env.SALT_ROUNDS)
+          )
+        : undefined
+    }
+    if (req.file) {
+      updateData.image = req.file.path
+    }
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+      new: true
+    })
+    res.status(200).json(updatedUser)
+  } catch (error) {
+    res.status(500).json({ error: 'Error updating profile' })
+  }
+}
+=======
 // Soft-delete (deactivates user insted of removing it from the DB)
 const deleteUser = async (req, res) => {
   try {
