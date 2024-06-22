@@ -32,11 +32,15 @@ const Profile = ({ user, setUser }) => {
     }
 
     try {
-      const response = await axios.put('/api/users/update', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.put(
+        `http://localhost:3001/users/profile/${user._id}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         }
-      })
+      )
       setUser(response.data)
       navigate('/')
     } catch (error) {
