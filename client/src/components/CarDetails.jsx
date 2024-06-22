@@ -3,21 +3,20 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Receipts from './Receipts'
 import Reviews from './Reviews'
+import Booking from '../pages/Booking'
+
 const CarDetails = () => {
   const carId = useParams().id
   const [car, setCar] = useState('')
-  const [isLoading, setIsLoading] = useState(true) //to display some freindly loading screen for the user in order to achive UX (^_^)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
-
-  // State variables for rental details
-  const [rentalDays, setRentalDays] = useState(0)
-  const [totalPrice, setTotalPrice] = useState(0)
   const [showReceipt, setShowReceipt] = useState(false) // Flag to control receipt display
 
+  const url = `http://localhost:3001/car/${carId}`
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/car/${carId}`)
+        const response = await axios.get(url)
         setCar(response.data)
       } catch (err) {
         console.error('Error fetching car details:', err)
@@ -49,17 +48,10 @@ const CarDetails = () => {
   const transmission = car.transmission
   const engine = car.engine
   const mileage = car.mileage
-  const pricePerDay = car.price // pay per day
+  const pricePerDay = car.price // Pay per day
 
-  const handleRentalDaysChange = (event) => {
-    const days = parseInt(event.target.value)
-    setRentalDays(days)
-    setTotalPrice(days * pricePerDay)
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-
+  const handleRentClick = () => {
+    // Handle successful booking logic (optional)
     setShowReceipt(true)
   }
 
@@ -79,26 +71,17 @@ const CarDetails = () => {
         <li>Price per Day: ${pricePerDay.toFixed(2)}</li>
       </ul>
 
-      {/* Form to enter rental days */}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="rentalDays">Number of rental days: </label>
-        <input
-          type="number"
-          id="rentalDays"
-          min="1"
-          value={rentalDays}
-          onChange={handleRentalDaysChange}
-        />
-        <button type="submit">Rent Now</button>
-      </form>
-      <Reviews carId={carId} />
+      {/* Booking component with car details as props */}
+      <Booking car={car} onBookNow={handleRentClick} />
+
       {showReceipt && (
         <Receipts
           car={car}
-          rentalDays={rentalDays}
-          totalPrice={pricePerDay * rentalDays}
+          rentalDays={1} // Replace with logic to calculate rental days (optional)
+          totalPrice={pricePerDay} // Replace with total price calculation (optional)
         />
       )}
+      <Reviews carId={carId} />
     </div>
   )
 }

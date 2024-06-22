@@ -33,21 +33,23 @@ const Register = () => {
       password: '',
       confirmPassword: ''
     })
-    navigate('/login')
+    navigate('/user/login')
   }
 
   return (
     <div className="register">
-      <form className="handleRegisterSubmit" onSubmit={handleSubmit}>
-        <label htmlFor="userName">Name</label>
-        <input
-          onChange={handleChange}
-          name="userName"
-          type="text"
-          placeholder="enter your name"
-          value={formValues.userName}
-          required
-        />
+      <form className="registerForm" onSubmit={handleSubmit}>
+        <div className="registerInput">
+          <label htmlFor="userName">Name</label>
+          <input
+            onChange={handleChange}
+            name="userName"
+            type="text"
+            placeholder="Enter your name"
+            value={formValues.userName}
+            required
+          />
+        </div>
         <div className="registerInput">
           <label htmlFor="email">Email</label>
           <input
