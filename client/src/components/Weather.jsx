@@ -9,6 +9,7 @@ const Weather = () => {
     condition: ''
   })
   const apiKey = import.meta.env.WEATHER_APIKEY // Import API key from secret location(yes you know it and smile i can see that 😂)
+  console.log('API Key:', import.meta.env.WEATHER_APIKEY)
   const [tempUnit, setTempUnit] = useState('celsius') // The initial unit
   const [errorMessage, setErrorMessage] = useState('') // State for error messages
 
@@ -21,12 +22,13 @@ const Weather = () => {
   }
 
   const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
-
+  console.log('url:', url)
   useEffect(() => {
     const fetchWeather = async () => {
       try {
         const response = await axios.get(url)
         const data = response.data
+        console.log('data:', data)
         setWeather({
           location: data.location.name,
           temp_c: data.current.temp_c,
