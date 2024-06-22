@@ -1,11 +1,12 @@
 import Spell from './Spell'
-import Weather from './Weather'
-const ApisContainer = () => {
+/* import Weather from './Weather'
+ */ const ApisContainer = () => {
   return (
     <div className="apisContainer">
       {' '}
       <Spell />
-      <Weather />
+      {/*       <Weather />
+       */}{' '}
     </div>
   )
 }

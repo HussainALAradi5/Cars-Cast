@@ -38,7 +38,7 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email })
-    let matched = await midlleware.compraPassword(user.passwordDigest, password)
+    let matched = await middleware.compraPassword(user.passwordDigest, password)
 
     if (matched) {
       let payload = {
