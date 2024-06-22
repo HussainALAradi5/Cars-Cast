@@ -83,25 +83,25 @@ const show = async (req, res) => {
 const update = async (req, res) => {
   try {
     const userId = req.params.id
-    const updates = req.body
-    const userName = updates.userName
-    const email = updates.email
-    console.log(`userName:${userName}\nemail:${email}`)
-    userName.trim()
-    email.trim()
-    const updatedUser = await User.findByIdAndUpdate(userId, updates, {
-      new: true,
-      runValidators: true
-    })
-    if (!updatedUser) {
-      console.log('User not found or update failed:', userId)
-      return res
-        .status(400)
-        .render('error', { error: 'User not found or update failed' })
+    const updateData = {
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password
+        ? await bcrypt.hash(
+            req.body.password,
+            parseInt(process.env.SALT_ROUNDS)
+          )
+        : undefined
     }
-    console.log('User updated successfully:', updatedUser)
-  } catch (err) {
-    errorsCatch(err, res)
+    if (req.file) {
+      updateData.image = req.file.path
+    }
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+      new: true
+    })
+    res.status(200).json(updatedUser)
+  } catch (error) {
+    res.status(500).json({ error: 'Error updating profile' })
   }
 }
 // Soft-delete (deactivates user insted of removing it from the DB)
