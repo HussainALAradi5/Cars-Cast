@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import Spell from './Spell'
+import Weather from './Weather'
+import ApisContainer from './ApisContainer'
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
   if (user) {
@@ -69,7 +71,7 @@ const Nav = ({ user, handleLogOut }) => {
     <header>
       {' '}
       <div className="nav">
-        <Spell />
+        <ApisContainer />
         <br />
       </div>
       {user ? userOptions : publicOptions}
