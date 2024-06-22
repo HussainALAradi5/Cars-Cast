@@ -38,7 +38,10 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email })
-    let matched = await middleware.compraPassword(user.passwordDigest, password)
+    let matched = await middleware.comparePassword(
+      user.passwordDigest,
+      password
+    )
 
     if (matched) {
       let payload = {
@@ -52,24 +55,6 @@ const login = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(401).send({ status: 'Error', msg: 'An error has occurred!' })
-  }
-}
-
-// Update(Edit a user details using form)
-const edit = async (req, res) => {
-  try {
-    const userId = req.params.id
-    const user = await User.findById(userId)
-
-    if (!user) {
-      console.log('User not found:', userId)
-      return res.status(404).render('error', { error: 'User not found' })
-    }
-
-    console.log('User details for editing:', user)
-    res.render(`editUser`, { user })
-  } catch (err) {
-    errorsCatch(err, res)
   }
 }
 
@@ -102,23 +87,6 @@ const update = async (req, res) => {
   }
 }
 
-// Display user profile
-const show = async (req, res) => {
-  try {
-    const userId = req.params.id
-    const user = await User.findById(userId)
-
-    if (!user) {
-      console.log('User not found:', userId)
-      return res.status(404).render('error', { error: 'User not found' })
-    }
-
-    console.log('User profile:', user)
-  } catch (err) {
-    errorsCatch(err, res)
-  }
-}
-
 // Soft-delete (deactivates user insted of removing it from the DB)
 const deleteUser = async (req, res) => {
   try {
@@ -142,6 +110,7 @@ const deleteUser = async (req, res) => {
 }
 
 module.exports = {
+  login,
   edit,
   update,
   show,

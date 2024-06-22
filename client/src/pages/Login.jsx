@@ -4,7 +4,6 @@ import { SignInUser } from '../services/Auth'
 
 const Login = ({ setUser }) => {
   const navigate = useNavigate()
-  const Login = { setUser }
   const [formValues, setFormValues] = useState({ email: '', password: '' })
 
   const handleChange = (e) => {
