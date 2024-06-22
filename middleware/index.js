@@ -8,6 +8,26 @@ const hashPassword = async (password) => {
   let hashPassword = await bcrypt.hash(password, SALT_ROUNDS) //create hashed password with nth times encrypts
   return hashPassword
 }
+const getUserIdFromToken = (token) => {
+  if (!token) {
+    console.log('No token found')
+    return null
+  }
+
+  try {
+    const decoded = jwt.decode(token)
+    console.log(decoded)
+    // Extract the user ID from the payload
+    const userId = decoded.id
+
+    console.log('User ID:', userId)
+
+    return userId
+  } catch (error) {
+    console.error('Error decoding token:', error)
+    return null
+  }
+}
 const comparePassword = async (storedPassword, password) => {
   //read both passwords,the login and the storedOne to compare both
   let passwordMatch = await bcrypt.compare(password, storedPassword)
@@ -52,5 +72,6 @@ module.exports = {
   verifyToken,
   createToken,
   comparePassword,
-  hashPassword
+  hashPassword,
+  getUserIdFromToken
 }
