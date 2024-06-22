@@ -8,10 +8,10 @@ const APP_SECRET = process.env.APP_SECRET
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/') // specify the directory to store uploaded files
+    cb(null, 'uploads/') // specify file to save our files to that file and its called upload
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9) //genereate random name
     cb(null, file.fieldname + '-' + uniqueSuffix) // specify the filename format
   }
 })
@@ -89,7 +89,7 @@ module.exports = {
   createToken,
   comparePassword,
   hashPassword,
-  upload
-=======
+  upload,
+
   getUserIdFromToken
 }
