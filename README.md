@@ -19,7 +19,7 @@ A registered user can enjoy a seamless booking, flexible rental durations and tr
 
 #### Entity-Relationship Diagram (ERD):
 
-![ERD](./client/images/CarCast.drawio.png)
+![ERD](./client/images/Car%20Cast.jpg)
 
 #### Components Diagram:
 
@@ -50,7 +50,16 @@ A registered user can enjoy a seamless booking, flexible rental durations and tr
 - **_React.js_**
 
 ---
+### **_Future Updates_**
 
+- [x] add weather APi
+- [ ] add colorpicker to allow the user to select the background color of the website(during the seasion)
+- [x] Spell of the day api
+- [x] have nice UX
+- [x] add booking calander
+- [ ] maybe GPS to track the user  to benefit. 
+
+---
 ### **_Credits_**
 
 [Trello](https://trello.com/) |
