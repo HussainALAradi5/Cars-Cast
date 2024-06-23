@@ -34,7 +34,7 @@ const Profile = ({ user, setUser }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3001/users/profile/${user._id}`,
+        `http://localhost:3001/user/profile/${user._id}`,
         formData,
         {
           headers: {
