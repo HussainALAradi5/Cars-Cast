@@ -32,11 +32,13 @@ const Spell = () => {
   const displayedContent = showDescription ? spell.description : spell.name
 
   return (
-    <div className="spells">
-      <h2 className="spell">Spell of the Day:</h2>
-      <br />
-      <div className="spellContent" onClick={toggleContent}>
-        <h2 className="spellHeader">{displayedContent}</h2>
+    <div className="mainCotainer">
+      <div className="spellContainer">
+        <h2 className="spell">Spell of the Day:</h2>
+        <br />
+        <div className="spellContent" onClick={toggleContent}>
+          <h2 className="spellHeader">{displayedContent}</h2>
+        </div>
       </div>
     </div>
   )

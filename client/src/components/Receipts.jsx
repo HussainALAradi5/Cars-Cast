@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-
 const Receipts = (props) => {
   const { car, rentalDays, totalPrice } = props
   const { id } = useParams()
   const [receipt, setReceipt] = useState(null)
-
   useEffect(() => {
     const fetchReceipt = async () => {
       try {
@@ -16,14 +14,11 @@ const Receipts = (props) => {
         console.error('Error fetching receipt details:', error)
       }
     }
-
     fetchReceipt()
   }, [id])
-
   if (!receipt) {
     return <div>Loading...</div>
   }
-
   return (
     <div>
       <h1>Receipt Details</h1>
@@ -37,5 +32,4 @@ const Receipts = (props) => {
     </div>
   )
 }
-
 export default Receipts

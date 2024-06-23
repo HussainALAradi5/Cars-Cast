@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Calendar } from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
+import '../App.css'
 
 const Booking = ({ car, onBookNow }) => {
-  const [selectedDate, setSelectedDate] = useState(null)
+  const [selectedDates, setSelectedDates] = useState([null, null])
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date)
+  const handleDateChange = (dates) => {
+    setSelectedDates(dates)
   }
 
-  const calculateRentalDays = (selectedDate) => {
-    if (!selectedDate) return 0
-
-    const today = new Date()
-    // Consider only future dates and whole days
-    const differenceInDays = Math.floor(
-      (selectedDate - today) / (1000 * 60 * 60 * 24)
-    )
+  const calculateRentalDays = (selectedDates) => {
+    if (!selectedDates || !selectedDates[0] || !selectedDates[1]) return 0
+    const [startDate, endDate] = selectedDates
+    const differenceInTime = endDate.getTime() - startDate.getTime()
+    const differenceInDays = Math.ceil(differenceInTime / (1000 * 60 * 60 * 24))
     return differenceInDays > 0 ? differenceInDays : 0
   }
 
   const handleBookNow = () => {
-    if (!selectedDate) return
-
-    const rentalDays = calculateRentalDays(selectedDate)
+    if (!selectedDates || !selectedDates[0] || !selectedDates[1]) return
+    const rentalDays = calculateRentalDays(selectedDates)
     const totalPrice = rentalDays * car.price
-
-    // Pass rental days and total price as arguments to onBookNow function
     onBookNow(rentalDays, totalPrice)
   }
 
@@ -34,17 +30,22 @@ const Booking = ({ car, onBookNow }) => {
       <h2>
         Book {car.make} {car.model}
       </h2>
-      <p>Select your rental date:</p>
+      <p>Select your rental date range:</p>
       <Calendar
         onChange={handleDateChange}
-        selectRange={false}
+        selectRange={true}
         minDate={new Date()}
       />
       <p>
-        Selected Date:{' '}
-        {selectedDate ? selectedDate.toLocaleDateString() : 'No date selected'}
+        Selected Date Range:{' '}
+        {selectedDates[0] && selectedDates[1]
+          ? `${selectedDates[0].toLocaleDateString()} - ${selectedDates[1].toLocaleDateString()}`
+          : 'No date range selected'}
       </p>
-      <button onClick={handleBookNow} disabled={!selectedDate}>
+      <button
+        onClick={handleBookNow}
+        disabled={!selectedDates[0] || !selectedDates[1]}
+      >
         Book Now
       </button>
     </div>

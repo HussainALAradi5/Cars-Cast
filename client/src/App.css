@@ -9,6 +9,9 @@
 label {
   color: white;
 }
+h1 {
+  font-family: 'Great Vibes', cursive;
+}
 body {
   font-family: monospace;
   font-size: 1rem;
@@ -116,7 +119,7 @@ img {
   font-weight: 900;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  font-family: Impact, Haettenschweiler, 'Arial', sans-serif;
+  font-family: 'Great Vibes', cursive;
 }
 .nav {
   display: flex;
@@ -130,12 +133,24 @@ img {
   transition: 1.2s;
   border-bottom: 0.4rem solid blue;
 }
+.spellContainer {
+  width: 100%;
+  margin-left: 600px;
+  position: relative;
+}
 .spell {
   color: snow;
   font-family: monospace;
   text-shadow: 0 0 5px white;
   text-align: center;
+  margin-top: -10px;
+  position: absolute;
 }
+.spellContent {
+  text-align: center;
+  position: absolute;
+}
+
 .spell:hover {
   color: snow;
   font-family: cursive;
@@ -310,4 +325,73 @@ input:focus {
 
 .registerButton:focus {
   outline: none;
+}
+
+/* Booking CSS*/
+.booking-container {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.booking-container h2 {
+  margin-top: 0;
+  color: #444;
+}
+
+.booking-container p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.booking-container .react-calendar {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-container .react-calendar__tile--rangeStart,
+.booking-container .react-calendar__tile--rangeEnd,
+.booking-container .react-calendar__tile--rangeBothEnds {
+  background: lightblue;
+  color: white;
+}
+
+.booking-container .react-calendar__tile--hover {
+  background: royalblue;
+}
+
+.booking-container .react-calendar__tile--now {
+  background: red;
+}
+
+.booking-container .react-calendar__navigation button {
+  color: #333;
+}
+
+.booking-container .react-calendar__navigation button:disabled {
+  background-color: #f0f0f0;
+  color: #ccc;
+}
+
+.booking-container button {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.booking-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.booking-container button:hover:enabled {
+  background-color: royalblue;
 }

@@ -11,8 +11,10 @@ const CarDetails = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
   const [showReceipt, setShowReceipt] = useState(false) // Flag to control receipt display
-
+  const [rentalDays, setRentalDays] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
   const url = `http://localhost:3001/car/${carId}`
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +26,6 @@ const CarDetails = () => {
       }
       setIsLoading(false)
     }
-
     fetchData()
   }, [])
 
@@ -50,8 +51,9 @@ const CarDetails = () => {
   const mileage = car.mileage
   const pricePerDay = car.price // Pay per day
 
-  const handleRentClick = () => {
-    // Handle successful booking logic (optional)
+  const handleRentClick = (days, price) => {
+    setRentalDays(days)
+    setTotalPrice(price)
     setShowReceipt(true)
   }
 
@@ -70,15 +72,13 @@ const CarDetails = () => {
         <li>Mileage: {mileage} miles</li>
         <li>Price per Day: ${pricePerDay.toFixed(2)}</li>
       </ul>
-
       {/* Booking component with car details as props */}
       <Booking car={car} onBookNow={handleRentClick} />
-
       {showReceipt && (
         <Receipts
           car={car}
-          rentalDays={1} // Replace with logic to calculate rental days (optional)
-          totalPrice={pricePerDay} // Replace with total price calculation (optional)
+          rentalDays={rentalDays} // Pass rental days
+          totalPrice={totalPrice} // Pass total price
         />
       )}
       <Reviews carId={carId} />
