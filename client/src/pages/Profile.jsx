@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../App.css'
 import axios from 'axios'
 
 const Profile = ({ user, setUser }) => {
@@ -77,15 +78,11 @@ const Profile = ({ user, setUser }) => {
           onChange={handleChange}
         />
 
-      <input id="email" type="text" placeholder="Type your New Email" />
-      <input id="username" type="text" placeholder="Type your New UserName" />
-      <input id="password" type="text" placeholder="Type your New Password" />
-
         <h2>Upload Profile Picture:</h2>
-        <input type="file" onChange={handleImage} />
+        <input className="updateimage" type="file" onChange={handleImage} />
         {img && <img src={img} alt="Profile Preview" />}
 
-        <button type="submit">Update Profile</button>
+        <button type="submitUpdate">Update Profile</button>
       </form>
     </div>
   ) : (

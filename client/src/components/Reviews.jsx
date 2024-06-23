@@ -40,6 +40,7 @@ const Reviews = (props) => {
           placeholder="Place your review!"
           value={reviewValue.review}
         ></textarea>
+        <br />
         <Link to={`/car/${carId}`}>
           <button className="reviewSubmit" onClick={handleSubmit}>
             submit the review
