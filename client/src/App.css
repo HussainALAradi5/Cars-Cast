@@ -510,3 +510,6 @@ input:focus {
 .protected button:hover {
   background-color: darkblue;
 }
+select{
+  background: black;
+}

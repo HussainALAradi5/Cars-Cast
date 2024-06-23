@@ -7,7 +7,7 @@ const Weather = () => {
     temp_c: '',
     condition: ''
   })
-  const apiKey = import.meta.env.VITE_WEATHER_APIKEY // Import API key from secret location(yes you know it and smile i can see that 😂)
+  const apiKey = import.meta.env.VITE_REACT_WEATHER_APIKEY // Import API key from secret location(yes you know it and smile i can see that 😂)
   const [tempUnit, setTempUnit] = useState('celsius') // The initial unit
   const [errorMessage, setErrorMessage] = useState('') // State for error messages
 
