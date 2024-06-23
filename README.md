@@ -15,6 +15,21 @@ Hussain Al Aradi | Sara Alalawi | Maryam Almutawa
 With our app, you can browse through a diverse fleet of cars, and book your ride with just a few taps !
 A registered user can enjoy a seamless booking, flexible rental durations and transparent pricing. Also, the user-freindly interface allows the website visitors to register smoothly and gain more previliges and options within the website instead of only viewing the cars information.
 
+---
+
+### **_Screenshots_**
+
+##### image header 1
+
+![intro](./client/images/01.jpg)
+![intro](./client/images/02.jpg)
+
+##### image header 2
+
+## ![videos:](./client/images/intro.gif)
+
+## ![videos:](./client/images/intro2.gif)
+
 ### **_Design Phase_**
 
 #### Entity-Relationship Diagram (ERD):
@@ -47,9 +62,10 @@ A registered user can enjoy a seamless booking, flexible rental durations and tr
 
 **_2) Frontend Development:_**
 
-- **_React.js_**
+- **_React.js and some of its libraries(react-calander...etc)_**
 
 ---
+
 ### **_Future Updates_**
 
 - [x] add weather APi
@@ -57,9 +73,10 @@ A registered user can enjoy a seamless booking, flexible rental durations and tr
 - [x] Spell of the day api
 - [x] have nice UX
 - [x] add booking calander
-- [ ] maybe GPS to track the user  to benefit. 
+- [ ] maybe GPS to track the user to benefit.
 
 ---
+
 ### **_Credits_**
 
 [Trello](https://trello.com/) |
