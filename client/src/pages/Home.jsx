@@ -33,7 +33,7 @@ const Home = () => {
   }
   return (
     <div className="homePage">
-      <h1 className="homeHeader">welcome to our rental car project!</h1>
+      <h1 className="HomeHeader">welcome to our rental car project!</h1>
 
       <Search
         value={searchValue}
